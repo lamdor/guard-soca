@@ -1,22 +1,16 @@
 #+LANGUAGE:  en
 #+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
-#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
-#+EXPORT_SELECT_TAGS: export
-#+EXPORT_EXCLUDE_TAGS: noexport
-#+LINK_UP:
-#+LINK_HOME:
-#+XSLT:
-
+#+STARTUP: oddeven
 
 * Guard::Soca
   Guard::Soca runs soca's push automatically
-*** Install
+** Install
     Please be sure to have [[https://github.com/guard/guard][guard]] installed first
 #+BEGIN_SRC sh
 gem install guard-soca
 #+END_SRC
-*** Usage
+** Usage
     In your Guardfile
 #+BEGIN_SRC ruby
 guard "soca" do
@@ -24,12 +18,18 @@ guard "soca" do
 end
 #+END_SRC
     Now guard-soca will automatically push and compact CouchDB when needed
-*** Options
+** Options
     There are three options:
-***** appdir
+    - *appdir*
       Where the application lives. Defaults to current directory
-***** env
+    - *env*
       Which configuration should soca push to
-***** config_file
+    - *config_file*
       The location of the config.js
+#+BEGIN_SRC ruby
+guard "soca", :appdir => "app", :env => "test" do
+  watch(".+\.js$")
+end
+#+END_SRC
+
 
